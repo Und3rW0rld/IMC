@@ -3,6 +3,7 @@ const inputId = document.getElementById('idInput');
 const weightInput = document.getElementById('weightInput');
 const heightInput = document.getElementById('heightInput');
 const btnSend = document.getElementById('btnSend');
+const btnVerify = document.getElementById('btnVerify');
 const idError = document.getElementById('idError');
 const weightError = document.getElementById('weightError');
 const heightError = document.getElementById('heightError');
@@ -34,7 +35,7 @@ function mostrarRegistros(id){
 	`;
 	//Mostramos los 10 ultimos registros del id seleccionado
 	let registrosTabla = registros.filter(registro => registro.id == id);
-	registrosTabla = registrosTabla.slice(0,10);
+	registrosTabla = registrosTabla.slice(-10);
 	registrosTabla.forEach(registro => {
 		if(registro.id == id){
 			tablaHTML += `
@@ -193,5 +194,22 @@ btnSend.addEventListener('click', function() {
 	localStorage.setItem('registrosIMC', JSON.stringify(registros));
 	mostrarRegistros(inputId.value);
 	interpretarIMC(imc);
+});
+
+btnVerify.addEventListener('click', function() { 
+    const id = inputId.value;
+    const registrosTabla = registros.filter(registro => registro.id == id);
+    
+    if (registrosTabla.length === 0) {
+        // Si no hay registros para el ID ingresado, mostrar un mensaje
+        tablaRegistros.innerHTML = "<tr><td colspan='5'>No hay registros para este ID.</td></tr>";
+        // También podrías ocultar la imagen si es necesario
+        let img = document.getElementById('img');
+        img.style.display = 'none';
+		interpretacionIMC.innerText = "";
+    } else {
+        // Si hay registros para el ID ingresado, mostrarlos
+        mostrarRegistros(id);
+    }
 });
 
