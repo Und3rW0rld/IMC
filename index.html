@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>IMC Calculator</title>
+	<link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+	<div class="content">
+		<section class="content-data">
+			<img id="img" src="./img/imc-img.png" alt="">
+			<table id="tablaRegistros" class="tabla-datos">
+
+			</table>
+			<span id="interpretacionIMC"></span>
+
+		</section>
+		<section class="form-content">
+			<h1 class="title">IMC Calculator</h1>
+			<form class="form-imc" action="" method="">
+				<div class="field">
+					<label for="id">ID</label><span class="input-error" id="idError" class="error"></span>
+					<input type="number" inputmode="numeric" name="id" id="idInput" required>
+				</div>
+				<div class="field">
+					<label for="weight">Weight (kg)</label><span class="input-error" id="weightError" class="error"></span>
+					<input type="number" name="weight" id="weightInput" required>
+				</div>
+				<div class="field">
+					<label for="height">Height (m)</label><span class="input-error" id="heightError" class="error"></span>
+					<input type="text" name="height" id="heightInput" required>
+				</div>
+				<div class="field field-btns">
+					<input id="btnSend" class="btn" type="button" value="Send"/>
+					<input id="btnSend" class="btn" type="button" value="Verify"/>
+				</div>
+			</form>
+		</section>
+	</div>
+</body>
+<script src="./src/app.js"></script>
+</html>
